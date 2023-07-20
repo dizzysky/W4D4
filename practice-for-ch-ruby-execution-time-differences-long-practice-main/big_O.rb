@@ -44,7 +44,7 @@ def largest_contiguous_subsum(list)
     #             break
     #         end
     #     end
-    # end
+    # end   
 
 
 
@@ -55,8 +55,27 @@ def largest_contiguous_subsum(list)
         global = [global,local].max
     end
 
-    global
+    global  # time complexity = O(n)
 
 end
+
+
+def dig_deep(arr)
+    max = arr.first
+    result = []
+    arr.each_with_index do |el, idx|
+        (idx+1...arr.length).each do |idx2|
+            result << arr[idx..idx2]
+            if arr[idx..idx2].sum > max 
+                max = arr[idx..idx2].sum
+            end
+        end
+    end 
+
+    max
+end #time complexity O(n^2)
+
+
+
 
 
