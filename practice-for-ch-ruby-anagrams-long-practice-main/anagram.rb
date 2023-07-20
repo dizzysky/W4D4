@@ -25,7 +25,7 @@ def first_anagram?(string1,string2)
 
 
 
-end
+end  #O(n!)
 
 
 
@@ -40,10 +40,10 @@ def second_anagram?(string1, string2)
             string2 = string2.join
         end
 
-    end
+    end 
     
     string2.empty?
-end
+end    #O(n^2) ?? maybe O(n)
 
 
 # p 
@@ -76,9 +76,53 @@ def jumble_sort(str)
 end   
 
 
-p third_anagram?("gizmo", "sally")
-p third_anagram?("elvis", "lives")
+# p third_anagram?("gizmo", "sally")
+# p third_anagram?("elvis", "lives")
 
+
+
+
+def fourth_anagram?(string1,string2)
+
+    hash1 = Hash.new(0)
+    hash2 = Hash.new(0)
+
+    string1.each_char do |char|
+        hash1[char] += 1
+    end
+    string2.each_char do |char|
+        hash2[char] += 1
+    end
+
+    hash1 == hash2 
+
+
+end # time complexity O(n)
+
+
+
+def fifth_anagram(string1,string2)
+
+    hash = Hash.new(0)
+
+    string1.each_char do |char|
+        hash[char] += 1
+    end
+
+    string2.each_char do |char| 
+        hash[char] -= 1
+    end
+
+    hash.values.all?(&:zero?)
+
+end   #time complexity O(n)
+
+# p fourth_anagram?("gizmo", "sally")
+# p fourth_anagram?("elvis", "lives")
+
+
+p fifth_anagram("gizmo", "sally")
+p fifth_anagram("elvis", "lives")
 
 
 
